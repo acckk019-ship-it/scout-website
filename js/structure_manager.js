@@ -326,3 +326,21 @@ function updateContent() {
         if (el) el.textContent = text;
     }
 }
+
+// --- Translation Helpers ---
+function loadLanguage() {
+    const lang = getLang();
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+}
+
+function getLang() {
+    return localStorage.getItem('lang') || 'ar';
+}
+
+function toggleLanguage() {
+    const current = getLang();
+    const next = current === 'ar' ? 'en' : 'ar';
+    localStorage.setItem('lang', next);
+    location.reload();
+}
