@@ -1,6 +1,10 @@
 import { translations } from './i18n.js';
 import { createIcons, Menu, X, Globe, User, Search, ShoppingBag, Facebook, Instagram, Youtube, Music } from 'https://esm.sh/lucide@0.344.0'; // Using Music icon for SoundCloud as generic fallback if specific not available, or check validity
 
+// Base path for GitHub Pages subdirectory hosting
+// Change to '' for local development or root domain hosting
+const BASE_PATH = '/scout-website';
+
 // Social Media Links
 const SOCIAL = {
     facebook: "https://www.facebook.com/people/%D9%85%D8%AC%D9%85%D9%88%D8%B9%D8%A7%D8%AA-%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85-%D8%A7%D9%84%D9%83%D8%B4%D9%81%D9%8A%D8%A9-%D9%81%D8%B1%D9%82%D8%A9-%D8%A7%D9%84%D9%85%D8%AA%D9%82%D8%AF%D9%85/100084122944742/?mibextid=ZbWKwL",
@@ -112,14 +116,13 @@ function injectHeader() {
     const lang = localStorage.getItem('lang') || 'ar';
     const t = translations[lang];
     const isRTL = lang === 'ar';
-    // Ideally, we just use /url if hosted on root.
 
     const navHTML = `
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200 shadow-sm transition-all duration-300" id="main-nav">
         <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
             <!-- Logo -->
-            <a href="/index.html" class="flex items-center gap-3 group">
-                <img src="/logo.png" alt="Logo" class="h-12 w-12 group-hover:scale-110 transition duration-300">
+            <a href="${BASE_PATH}/index.html" class="flex items-center gap-3 group">
+                <img src="${BASE_PATH}/logo.png" alt="Logo" class="h-12 w-12 group-hover:scale-110 transition duration-300">
                 <div class="hidden md:block">
                     <h1 class="font-bold text-lg text-green-900 leading-tight">${t.hero_title}</h1>
                     <span class="text-xs text-green-600 font-medium tracking-wider">${t.hero_subtitle}</span>
@@ -128,7 +131,7 @@ function injectHeader() {
 
             <!-- Desktop Menu -->
             <div class="hidden lg:flex items-center gap-1 ${isRTL ? 'space-x-reverse' : ''}">
-                <a href="/index.html" class="nav-item">${t.nav_home}</a>
+                <a href="${BASE_PATH}/index.html" class="nav-item">${t.nav_home}</a>
                 
                 <!-- Scout Movement Dropdown -->
                 <div class="relative group">
@@ -138,13 +141,13 @@ function injectHeader() {
                     </button>
                     <div class="absolute top-full ${isRTL ? 'right-0' : 'left-0'} pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                         <div class="bg-white rounded-xl shadow-xl border border-stone-100 overflow-hidden py-1">
-                            <a href="/scout-movement/index.html" class="dropdown-item">${t.sm_main}</a>
-                            <a href="/scout-movement/education.html" class="dropdown-item">${t.sm_edu}</a>
-                            <a href="/scout-movement/method.html" class="dropdown-item">${t.sm_method}</a>
-                            <a href="/scout-movement/promise.html" class="dropdown-item">${t.sm_promise}</a>
-                            <a href="/scout-movement/history.html" class="dropdown-item">${t.sm_history}</a>
-                            <a href="/scout-movement/bronze-wolf.html" class="dropdown-item">${t.sm_bronze}</a>
-                            <a href="/scout-movement/wood-badge.html" class="dropdown-item">${t.sm_wood}</a>
+                            <a href="${BASE_PATH}/scout-movement/index.html" class="dropdown-item">${t.sm_main}</a>
+                            <a href="${BASE_PATH}/scout-movement/education.html" class="dropdown-item">${t.sm_edu}</a>
+                            <a href="${BASE_PATH}/scout-movement/method.html" class="dropdown-item">${t.sm_method}</a>
+                            <a href="${BASE_PATH}/scout-movement/promise.html" class="dropdown-item">${t.sm_promise}</a>
+                            <a href="${BASE_PATH}/scout-movement/history.html" class="dropdown-item">${t.sm_history}</a>
+                            <a href="${BASE_PATH}/scout-movement/bronze-wolf.html" class="dropdown-item">${t.sm_bronze}</a>
+                            <a href="${BASE_PATH}/scout-movement/wood-badge.html" class="dropdown-item">${t.sm_wood}</a>
                         </div>
                     </div>
                 </div>
@@ -157,12 +160,12 @@ function injectHeader() {
                     </button>
                     <div class="absolute top-full ${isRTL ? 'right-0' : 'left-0'} pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                         <div class="bg-white rounded-xl shadow-xl border border-stone-100 overflow-hidden py-1">
-                            <a href="/groups/baraem.html" class="dropdown-item">${t.group_baraem}</a>
-                            <a href="/groups/zahrat.html" class="dropdown-item">${t.group_zahrat}</a>
-                            <a href="/groups/kashaf.html" class="dropdown-item">${t.group_kashaf}</a>
-                            <a href="/groups/motaqad.html" class="dropdown-item">${t.group_motaqad}</a>
-                            <a href="/groups/qada.html" class="dropdown-item">${t.group_qada}</a>
-                            <a href="/groups/qadat.html" class="dropdown-item">${t.group_qadat}</a>
+                            <a href="${BASE_PATH}/groups/baraem.html" class="dropdown-item">${t.group_baraem}</a>
+                            <a href="${BASE_PATH}/groups/zahrat.html" class="dropdown-item">${t.group_zahrat}</a>
+                            <a href="${BASE_PATH}/groups/kashaf.html" class="dropdown-item">${t.group_kashaf}</a>
+                            <a href="${BASE_PATH}/groups/motaqad.html" class="dropdown-item">${t.group_motaqad}</a>
+                            <a href="${BASE_PATH}/groups/qada.html" class="dropdown-item">${t.group_qada}</a>
+                            <a href="${BASE_PATH}/groups/qadat.html" class="dropdown-item">${t.group_qadat}</a>
                         </div>
                     </div>
                 </div>
@@ -175,20 +178,20 @@ function injectHeader() {
                     </button>
                     <div class="absolute top-full ${isRTL ? 'right-0' : 'left-0'} pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                         <div class="bg-white rounded-xl shadow-xl border border-stone-100 overflow-hidden py-1">
-                            <a href="/world-organization/about.html" class="dropdown-item">${t.wo_about}</a>
-                            <a href="/world-organization/scout-centre.html" class="dropdown-item">${t.wo_centre}</a>
-                            <a href="/world-organization/committee.html" class="dropdown-item">${t.wo_comm}</a>
-                            <a href="/world-organization/bureau.html" class="dropdown-item">${t.wo_bureau}</a>
+                            <a href="${BASE_PATH}/world-organization/about.html" class="dropdown-item">${t.wo_about}</a>
+                            <a href="${BASE_PATH}/world-organization/scout-centre.html" class="dropdown-item">${t.wo_centre}</a>
+                            <a href="${BASE_PATH}/world-organization/committee.html" class="dropdown-item">${t.wo_comm}</a>
+                            <a href="${BASE_PATH}/world-organization/bureau.html" class="dropdown-item">${t.wo_bureau}</a>
                         </div>
                     </div>
                 </div>
 
-                <a href="/region/index.html" class="nav-item">${t.nav_region}</a>
-                <a href="/news/index.html" class="nav-item">${t.nav_news}</a>
-                <a href="/events/index.html" class="nav-item">${t.nav_events}</a>
-                <a href="/team/index.html" class="nav-item">${t.nav_team}</a>
-                <a href="/governance/index.html" class="nav-item">${t.nav_governance}</a>
-                <a href="/complaints.html" class="nav-item text-red-600 hover:text-red-700 font-medium">${t.nav_complaints}</a>
+                <a href="${BASE_PATH}/region/index.html" class="nav-item">${t.nav_region}</a>
+                <a href="${BASE_PATH}/news/index.html" class="nav-item">${t.nav_news}</a>
+                <a href="${BASE_PATH}/events/index.html" class="nav-item">${t.nav_events}</a>
+                <a href="${BASE_PATH}/team/index.html" class="nav-item">${t.nav_team}</a>
+                <a href="${BASE_PATH}/governance/index.html" class="nav-item">${t.nav_governance}</a>
+                <a href="${BASE_PATH}/complaints.html" class="nav-item text-red-600 hover:text-red-700 font-medium">${t.nav_complaints}</a>
             </div>
 
             <!-- Actions -->
@@ -198,15 +201,15 @@ function injectHeader() {
                     <span class="absolute top-full mt-1 bg-stone-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">${lang === 'ar' ? 'English' : 'عربي'}</span>
                 </button>
                 
-                <a href="/shop.html" class="p-2 hover:bg-stone-100 rounded-full transition text-stone-600 hidden sm:block">
+                <a href="${BASE_PATH}/shop.html" class="p-2 hover:bg-stone-100 rounded-full transition text-stone-600 hidden sm:block">
                     <i data-lucide="shopping-bag" class="w-5 h-5"></i>
                 </a>
                 
-                 <a href="/search.html" class="p-2 hover:bg-stone-100 rounded-full transition text-stone-600 hidden sm:block">
+                 <a href="${BASE_PATH}/search.html" class="p-2 hover:bg-stone-100 rounded-full transition text-stone-600 hidden sm:block">
                     <i data-lucide="search" class="w-5 h-5"></i>
                 </a>
 
-                <a href="/login.html" class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full font-bold transition text-sm shadow-md hover:shadow-lg">
+                <a href="${BASE_PATH}/login.html" class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full font-bold transition text-sm shadow-md hover:shadow-lg">
                     <i data-lucide="user" class="w-4 h-4"></i>
                     <span class="hidden sm:inline">${t.nav_login}</span>
                 </a>
@@ -221,18 +224,18 @@ function injectHeader() {
         <!-- Mobile Menu (Hidden by default) -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-stone-100 absolute top-full left-0 right-0 shadow-xl max-h-[80vh] overflow-y-auto">
             <div class="p-4 flex flex-col gap-2">
-                <a href="/index.html" class="mobile-nav-item">${t.nav_home}</a>
+                <a href="${BASE_PATH}/index.html" class="mobile-nav-item">${t.nav_home}</a>
                 <div class="border-t border-stone-100 my-1"></div>
                 <p class="text-xs font-bold text-stone-400 px-4 py-1 uppercase tracking-wider">${t.sm_main}</p>
-                <a href="/scout-movement/index.html" class="mobile-nav-item pl-8">${t.sm_main}</a>
-                <a href="/scout-movement/history.html" class="mobile-nav-item pl-8">${t.sm_history}</a>
+                <a href="${BASE_PATH}/scout-movement/index.html" class="mobile-nav-item pl-8">${t.sm_main}</a>
+                <a href="${BASE_PATH}/scout-movement/history.html" class="mobile-nav-item pl-8">${t.sm_history}</a>
                 <div class="border-t border-stone-100 my-1"></div>
-                <a href="/news/index.html" class="mobile-nav-item">${t.nav_news}</a>
-                <a href="/events/index.html" class="mobile-nav-item">${t.nav_events}</a>
-                <a href="/team/index.html" class="mobile-nav-item">${t.nav_team}</a>
-                <a href="/governance/index.html" class="mobile-nav-item">${t.nav_governance}</a>
-                <a href="/complaints.html" class="mobile-nav-item text-red-600">${t.nav_complaints}</a>
-                <a href="/shop.html" class="mobile-nav-item">${t.nav_shop}</a>
+                <a href="${BASE_PATH}/news/index.html" class="mobile-nav-item">${t.nav_news}</a>
+                <a href="${BASE_PATH}/events/index.html" class="mobile-nav-item">${t.nav_events}</a>
+                <a href="${BASE_PATH}/team/index.html" class="mobile-nav-item">${t.nav_team}</a>
+                <a href="${BASE_PATH}/governance/index.html" class="mobile-nav-item">${t.nav_governance}</a>
+                <a href="${BASE_PATH}/complaints.html" class="mobile-nav-item text-red-600">${t.nav_complaints}</a>
+                <a href="${BASE_PATH}/shop.html" class="mobile-nav-item">${t.nav_shop}</a>
             </div>
         </div>
     </nav>
@@ -250,7 +253,7 @@ function injectFooter() {
     <footer class="bg-stone-900 text-stone-400 py-12 mt-auto">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <div class="flex items-center justify-center gap-3 mb-6">
-                <img src="/logo.png" alt="Logo" class="h-12 w-12 grayscale brightness-200">
+                <img src="${BASE_PATH}/logo.png" alt="Logo" class="h-12 w-12 grayscale brightness-200">
                 <span class="text-xl font-bold text-stone-200">${t.hero_title}</span>
             </div>
             <p class="mb-8 max-w-md mx-auto text-stone-500">${t.contact_desc}</p>
