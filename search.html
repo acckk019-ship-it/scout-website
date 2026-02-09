@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البحث - مجموعات السلام الكشفية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "lucide": "https://esm.sh/lucide@0.344.0"
+      }
+    }
+    </script>
+</head>
+
+<body class="bg-stone-50 text-stone-900">
+
+    <!-- Hero Section -->
+    <section class="min-h-screen relative flex flex-col pt-32 pb-10 overflow-hidden bg-stone-900 text-white">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <img src="/camp_2.png" alt="Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-stone-900/90"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 w-full">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl lg:text-5xl font-extrabold mb-4">البحث في الموقع</h1>
+                <p class="text-lg opacity-80">ابحث عن الأنشطة، الصور، أو الأخبار</p>
+            </div>
+
+            <div class="bg-white rounded-[2rem] shadow-xl p-4 border border-stone-100 relative overflow-hidden mb-10">
+                <form class="relative flex items-center">
+                    <i data-lucide="search" class="absolute right-6 text-stone-400 w-6 h-6"></i>
+                    <input type="text"
+                        class="w-full bg-stone-50 text-stone-900 border-none rounded-xl py-4 pr-16 pl-6 focus:ring-2 focus:ring-green-500 text-lg font-medium placeholder-stone-400"
+                        placeholder="عما تبحث اليوم؟">
+                    <button type="submit"
+                        class="absolute left-2 bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-lg font-bold transition shadow-lg">بحث</button>
+                </form>
+            </div>
+
+            <!-- Empty State / Results Placeholder -->
+            <div class="text-center opacity-60">
+                <i data-lucide="search-x" class="w-16 h-16 mx-auto mb-4 text-stone-500"></i>
+                <p class="text-xl">لا توجد نتائج حالياً</p>
+                <p class="text-sm">جرب البحث عن كلمات مثل: مخيم، رحلة، براعم</p>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import { initStructure } from './js/structure_manager.js';
+        document.addEventListener('DOMContentLoaded', initStructure);
+    </script>
+</body>
+
+</html>

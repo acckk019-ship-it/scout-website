@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحوكمة - مجموعات السلام الكشفية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "lucide": "https://esm.sh/lucide@0.344.0"
+      }
+    }
+    </script>
+</head>
+
+<body class="bg-stone-50 text-stone-900">
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-stone-900 text-white">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <img src="/camp_1.png" alt="Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-stone-900/90"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl lg:text-7xl font-extrabold mb-6 leading-tight">الحوكمة واللوائح</h1>
+            <p class="text-xl lg:text-2xl mb-10 max-w-2xl mx-auto opacity-90">النظام الأساسي والسياسات</p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div
+                    class="bg-white rounded-[2rem] shadow-xl p-8 border border-stone-100 hover:shadow-2xl transition cursor-pointer">
+                    <i data-lucide="file-check" class="w-12 h-12 text-purple-600 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">اللائحة الأساسية</h3>
+                    <p class="text-stone-600 mb-4">النظام الأساسي الذي ينظم عمل المجموعات وهيكليتها.</p>
+                    <span class="text-purple-600 font-bold flex items-center gap-2">عرض الملف <i
+                            data-lucide="arrow-left" class="w-4 h-4"></i></span>
+                </div>
+                <div
+                    class="bg-white rounded-[2rem] shadow-xl p-8 border border-stone-100 hover:shadow-2xl transition cursor-pointer">
+                    <i data-lucide="shield-check" class="w-12 h-12 text-purple-600 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">سياسة الحماية من الأذى</h3>
+                    <p class="text-stone-600 mb-4">سياسات ومعايير حماية الأعضاء والمنتسبين.</p>
+                    <span class="text-purple-600 font-bold flex items-center gap-2">عرض الملف <i
+                            data-lucide="arrow-left" class="w-4 h-4"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import { initStructure } from '../js/structure_manager.js';
+        document.addEventListener('DOMContentLoaded', initStructure);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store - Al-Salam Scouts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-stone-50 text-stone-900 flex flex-col min-h-screen">
+
+    <main class="flex-grow container mx-auto px-4 py-24">
+        <div
+            class="bg-green-900 rounded-3xl p-8 lg:p-16 text-white flex flex-col lg:flex-row items-center gap-12 overflow-hidden relative shadow-2xl">
+            <div
+                class="absolute top-0 right-0 w-64 h-64 bg-green-800 rounded-full -translate-y-1/2 translate-x-1/2 opacity-20">
+            </div>
+
+            <div class="lg:w-1/2 relative z-10">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-6">متجر التجهيزات الكشفية</h2>
+                <p class="text-green-100 text-lg mb-8 leading-relaxed">
+                    احصل على الزي الكشفي الرسمي، الأوسمة، ومعدات التخييم الخاصة بفرقة المتقدم مباشرة عبر متجرنا على
+                    واتساب بزنس.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://wa.me/c/YOUR_NUMBER" target="_blank"
+                        class="bg-white text-green-900 px-8 py-4 rounded-xl font-bold hover:bg-green-50 transition flex items-center justify-center gap-3">
+                        تصفح المتجر الآن
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2 relative z-10 grid grid-cols-2 gap-4">
+                <div
+                    class="bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/10 hover:scale-105 transition">
+                    <img src="uniform.png" alt="Uniform" class="rounded-lg mb-2 shadow-sm">
+                    <p class="text-center font-bold">الزي الرسمي</p>
+                </div>
+                <div
+                    class="bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/10 hover:scale-105 transition">
+                    <img src="badge.png" alt="Badges" class="rounded-lg mb-2 shadow-sm">
+                    <p class="text-center font-bold">الأوسمة</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { initStructure } from './js/structure_manager.js';
+        document.addEventListener('DOMContentLoaded', initStructure);
+    </script>
+</body>
+
+</html>

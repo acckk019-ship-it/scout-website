@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Salam Scout Groups - Advanced Unit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "lucide": "https://esm.sh/lucide@0.344.0"
+      }
+    }
+    </script>
+</head>
+
+<body class="bg-stone-50 text-stone-900">
+
+    <!-- Hero Section -->
+    <section id="home"
+        class="relative pt-32 pb-20 lg:pt-60 lg:pb-48 overflow-hidden h-screen flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="hero_bg.png" alt="Scout Camp" class="w-full h-full object-cover brightness-50">
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-transparent to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 text-center text-white">
+            <div
+                class="inline-block animate-bounce mb-4 bg-green-600/20 backdrop-blur-md border border-green-400/30 text-green-300 px-4 py-1 rounded-full text-sm font-bold tracking-widest uppercase">
+                Since 2024
+            </div>
+            <h1 class="text-5xl lg:text-8xl font-extrabold mb-8 leading-tight drop-shadow-2xl">
+                مجموعات السلام الكشفية<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-200">فرقة
+                    المتقدم</span>
+            </h1>
+            <p class="text-xl lg:text-3xl mb-12 max-w-3xl mx-auto text-stone-200 font-light leading-relaxed">
+                نصنع القادة، نخدم المجتمع، ونعيش المغامرة. انضم إلينا في رحلة بناء الذات والقيم الكشفية.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#contact"
+                    class="bg-green-600 hover:bg-green-500 text-white px-10 py-5 rounded-full font-bold text-lg transition transform hover:-translate-y-1 shadow-lg hover:shadow-green-500/50 flex items-center justify-center gap-3">
+                    <i data-lucide="user-plus"></i> انضم إلينا الآن
+                </a>
+                <a href="#gallery"
+                    class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-10 py-5 rounded-full font-bold text-lg transition transform hover:-translate-y-1 border border-white/20 flex items-center justify-center gap-3">
+                    <i data-lucide="play-circle"></i> مشاهدة أنشطتنا
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div
+            class="absolute top-0 left-0 w-64 h-64 bg-green-50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-20 fade-in-section">
+                <h2 class="text-4xl font-bold text-stone-900 mb-6">لماذا فرقة المتقدم؟</h2>
+                <div class="w-24 h-1.5 bg-green-600 mx-auto rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Card 1 -->
+                <div
+                    class="p-10 rounded-3xl bg-stone-50 border border-stone-100 text-center card-hover fade-in-section">
+                    <div
+                        class="bg-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-sm text-green-600">
+                        <i data-lucide="shield-check" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-stone-800">القيادة والمسؤولية</h3>
+                    <p class="text-stone-600 leading-relaxed text-lg">نمنح الشباب فرصة قيادة المجموعات واتخاذ القرارات
+                        المصيرية في المخيمات.</p>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="p-10 rounded-3xl bg-green-900 text-white text-center transform scale-105 shadow-2xl fade-in-section">
+                    <div
+                        class="bg-green-800 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-inner text-green-300">
+                        <i data-lucide="tent" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">حياة الخلاء</h3>
+                    <p class="text-green-100 leading-relaxed text-lg">نتعلم فنون التخييم، الملاحة، والتعايش مع الطبيعة
+                        في أصعب الظروف.</p>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="p-10 rounded-3xl bg-stone-50 border border-stone-100 text-center card-hover fade-in-section">
+                    <div
+                        class="bg-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-sm text-green-600">
+                        <i data-lucide="heart" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-stone-800">الخدمة العامة</h3>
+                    <p class="text-stone-600 leading-relaxed text-lg">نؤمن بأن "الكشاف في خدمة الجميع"، وننفذ مشاريع
+                        تخدم مجتمعنا المحلي.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo & Video Gallery -->
+    <section id="gallery" class="py-24 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 fade-in-section">
+                <div>
+                    <h2 class="text-4xl font-bold text-stone-900 mb-4">معرض الأنشطة</h2>
+                    <p class="text-stone-600 text-lg">لمحات من مغامراتنا ومخيماتنا الكشفية الأخيرة</p>
+                </div>
+                <a href="/events/index.html"
+                    class="text-green-600 font-bold hover:text-green-800 transition flex items-center gap-2">
+                    عرض كل الأنشطة <i data-lucide="arrow-left"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 h-96 md:h-[600px]">
+                <div
+                    class="col-span-2 row-span-2 rounded-3xl overflow-hidden shadow-2xl group relative fade-in-section">
+                    <img src="camp_1.png" alt="Camp"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition"></div>
+                    <div class="absolute bottom-6 right-6 text-white text-left">
+                        <span class="text-green-400 font-bold text-sm tracking-uppercase">Featured</span>
+                        <h3 class="text-2xl font-bold">المخيم الصيفي السنوي</h3>
+                    </div>
+                </div>
+                <div class="rounded-3xl overflow-hidden shadow-md group border border-stone-200 fade-in-section">
+                    <img src="camp_2.png" alt="Activity"
+                        class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="rounded-3xl overflow-hidden shadow-md group border border-stone-200 fade-in-section">
+                    <img src="hike_1.png" alt="Hike"
+                        class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div
+                    class="col-span-2 rounded-3xl overflow-hidden shadow-md group relative border border-stone-200 fade-in-section">
+                    <img src="activity_1.png" alt="Video"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition cursor-pointer">
+                        <div
+                            class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition">
+                            <i data-lucide="play" class="w-8 h-8 text-white fill-white translate-x-0.5"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Business Store -->
+    <section id="store" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 fade-in-section">
+            <div
+                class="bg-gradient-to-br from-stone-900 to-stone-800 rounded-[2.5rem] p-8 lg:p-20 text-white flex flex-col lg:flex-row items-center gap-16 overflow-hidden relative shadow-2xl">
+                <!-- Decorative Circles -->
+                <div
+                    class="absolute top-0 right-0 w-96 h-96 bg-green-600 rounded-full blur-[100px] opacity-20 -translate-y-1/2 translate-x-1/2">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-80 h-80 bg-blue-600 rounded-full blur-[80px] opacity-10 translate-y-1/3 -translate-x-1/3">
+                </div>
+
+                <div class="lg:w-1/2 relative z-10">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-8 leading-tight">متجر التجهيزات<br><span
+                            class="text-green-400">الكشفية الرسمي</span></h2>
+                    <p class="text-stone-300 text-lg mb-10 leading-relaxed">
+                        احصل على الزي الكشفي الرسمي، الأوسمة، ومعدات التخييم الخاصة بفرقة المتقدم مباشرة عبر متجرنا على
+                        واتساب بزنس. جودة عالية وأسعار مدعومة للأعضاء.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <a href="https://wa.me/c/YOUR_NUMBER" target="_blank"
+                            class="bg-green-500 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-400 transition flex items-center justify-center gap-3 shadow-lg hover:shadow-green-500/25">
+                            <i data-lucide="shopping-bag"></i> تصفح الكتالوج
+                        </a>
+                        <a href="https://wa.me/YOUR_NUMBER" target="_blank"
+                            class="bg-white/10 text-white px-8 py-4 rounded-2xl font-bold hover:bg-white/20 backdrop-blur-md transition flex items-center justify-center gap-3 border border-white/10">
+                            <i data-lucide="message-circle"></i> تواصل معنا
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 relative z-10 w-full">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div
+                            class="bg-white/5 p-6 rounded-3xl backdrop-blur-md border border-white/10 transform translate-y-8">
+                            <img src="uniform.png" alt="Uniform"
+                                class="w-full h-auto drop-shadow-lg mb-4 hover:scale-105 transition duration-300">
+                            <p class="font-bold text-center text-stone-200">الزي الرسمي</p>
+                        </div>
+                        <div class="bg-white/5 p-6 rounded-3xl backdrop-blur-md border border-white/10">
+                            <img src="badge.png" alt="Badges"
+                                class="w-full h-auto drop-shadow-lg mb-4 hover:scale-105 transition duration-300">
+                            <p class="font-bold text-center text-stone-200">الأوسمة والشارات</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="py-20 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-stone-900 mb-4">استكشف الموقع</h2>
+                <p class="text-stone-600 text-lg">تصفح أقسام موقعنا الكامل</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <a href="/scout-movement/index.html"
+                    class="bg-white p-6 rounded-2xl text-center hover:shadow-lg transition border border-stone-100 group">
+                    <i data-lucide="compass"
+                        class="w-8 h-8 mx-auto mb-3 text-green-600 group-hover:scale-110 transition"></i>
+                    <span class="font-bold text-stone-800">الحركة الكشفية</span>
+                </a>
+                <a href="/world-organization/index.html"
+                    class="bg-white p-6 rounded-2xl text-center hover:shadow-lg transition border border-stone-100 group">
+                    <i data-lucide="globe"
+                        class="w-8 h-8 mx-auto mb-3 text-blue-600 group-hover:scale-110 transition"></i>
+                    <span class="font-bold text-stone-800">المنظمة العالمية</span>
+                </a>
+                <a href="/groups/baraem.html"
+                    class="bg-white p-6 rounded-2xl text-center hover:shadow-lg transition border border-stone-100 group">
+                    <i data-lucide="users"
+                        class="w-8 h-8 mx-auto mb-3 text-yellow-500 group-hover:scale-110 transition"></i>
+                    <span class="font-bold text-stone-800">المراحل الكشفية</span>
+                </a>
+                <a href="/news/index.html"
+                    class="bg-white p-6 rounded-2xl text-center hover:shadow-lg transition border border-stone-100 group">
+                    <i data-lucide="newspaper"
+                        class="w-8 h-8 mx-auto mb-3 text-purple-600 group-hover:scale-110 transition"></i>
+                    <span class="font-bold text-stone-800">الأخبار</span>
+                </a>
+                <a href="/events/index.html"
+                    class="bg-white p-6 rounded-2xl text-center hover:shadow-lg transition border border-stone-100 group">
+                    <i data-lucide="calendar"
+                        class="w-8 h-8 mx-auto mb-3 text-orange-500 group-hover:scale-110 transition"></i>
+                    <span class="font-bold text-stone-800">الفعاليات</span>
+                </a>
+                <a href="/team/index.html"
+                    class="bg-white p-6 rounded-2xl text-center hover:shadow-lg transition border border-stone-100 group">
+                    <i data-lucide="user-check"
+                        class="w-8 h-8 mx-auto mb-3 text-teal-600 group-hover:scale-110 transition"></i>
+                    <span class="font-bold text-stone-800">فريق القادة</span>
+                </a>
+            </div>
+            <!-- Second Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                <a href="/governance/index.html"
+                    class="bg-white p-5 rounded-xl text-center hover:shadow-lg transition border border-stone-100 group">
+                    <i data-lucide="file-check" class="w-6 h-6 mx-auto mb-2 text-indigo-600"></i>
+                    <span class="font-medium text-stone-700 text-sm">الحوكمة</span>
+                </a>
+                <a href="/region/index.html"
+                    class="bg-white p-5 rounded-xl text-center hover:shadow-lg transition border border-stone-100 group">
+                    <i data-lucide="map" class="w-6 h-6 mx-auto mb-2 text-rose-600"></i>
+                    <span class="font-medium text-stone-700 text-sm">الإقليم</span>
+                </a>
+                <a href="/shop.html"
+                    class="bg-white p-5 rounded-xl text-center hover:shadow-lg transition border border-stone-100 group">
+                    <i data-lucide="shopping-bag" class="w-6 h-6 mx-auto mb-2 text-amber-600"></i>
+                    <span class="font-medium text-stone-700 text-sm">المتجر</span>
+                </a>
+                <a href="/complaints.html"
+                    class="bg-white p-5 rounded-xl text-center hover:shadow-lg transition border border-stone-100 group">
+                    <i data-lucide="message-square" class="w-6 h-6 mx-auto mb-2 text-red-600"></i>
+                    <span class="font-medium text-stone-700 text-sm">الشكاوى</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <div id="contact" class="bg-stone-50 py-24 border-t border-stone-200">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-stone-900 mb-6">جاهز للمغامرة؟</h2>
+            <p class="text-stone-600 text-xl mb-10">انضم إلينا اليوم وكن جزءاً من تاريخنا العريق.</p>
+            <form class="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl text-right max-w-2xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-bold text-stone-700 mb-2">الاسم</label>
+                        <input type="text"
+                            class="w-full px-5 py-4 rounded-xl bg-stone-50 border border-stone-100 focus:border-green-500 focus:bg-white outline-none transition"
+                            placeholder="الاسم الكامل">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-stone-700 mb-2">رقم الهاتف</label>
+                        <input type="tel"
+                            class="w-full px-5 py-4 rounded-xl bg-stone-50 border border-stone-100 focus:border-green-500 focus:bg-white outline-none transition"
+                            placeholder="01xxxxxxxxx">
+                    </div>
+                </div>
+                <div class="mb-8">
+                    <label class="block text-sm font-bold text-stone-700 mb-2">رسالتك</label>
+                    <textarea rows="4"
+                        class="w-full px-5 py-4 rounded-xl bg-stone-50 border border-stone-100 focus:border-green-500 focus:bg-white outline-none transition"
+                        placeholder="اكتب استفسارك هنا..."></textarea>
+                </div>
+                <button
+                    class="w-full bg-stone-900 text-white font-bold py-5 rounded-xl hover:bg-green-700 transition shadow-lg">إرسال
+                    الطلب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating Action -->
+    <a href="https://wa.me/YOUR_NUMBER"
+        class="fixed bottom-8 right-8 bg-green-500 hover:bg-green-600 text-white p-5 rounded-full shadow-2xl hover:scale-110 transition z-40 animate-bounce group"
+        title="Chat on WhatsApp">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+        <div
+            class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-stone-800 px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition shadow-lg pointer-events-none">
+            تواصل معنا</div>
+    </a>
+
+    <script type="module">
+        import { initStructure } from './js/structure_manager.js';
+        document.addEventListener('DOMContentLoaded', initStructure);
+    </script>
+</body>
+
+</html>

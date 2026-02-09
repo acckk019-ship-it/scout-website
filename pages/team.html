@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - Al-Salam Scouts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-stone-50 text-stone-900 flex flex-col min-h-screen">
+
+    <main class="flex-grow container mx-auto px-4 py-24 mt-12">
+        <h1 class="text-4xl font-bold text-green-900 mb-12 text-center">قيادة الفرقة</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Team Member 1 -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 text-center">
+                <div class="w-24 h-24 bg-stone-200 rounded-full mx-auto mb-4 overflow-hidden">
+                    <img src="/logo.png" alt="Leader" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-lg mb-1">القائد أحمد محمد</h3>
+                <p class="text-green-600 text-sm mb-4">قائد الفرقة</p>
+                <div class="flex justify-center gap-2 text-stone-400">
+                    <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 text-center">
+                <div class="w-24 h-24 bg-stone-200 rounded-full mx-auto mb-4 overflow-hidden">
+                    <img src="/logo.png" alt="Leader" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-lg mb-1">القائد عمر خالد</h3>
+                <p class="text-green-600 text-sm mb-4">مساعد قائد</p>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 text-center">
+                <div class="w-24 h-24 bg-stone-200 rounded-full mx-auto mb-4 overflow-hidden">
+                    <img src="/logo.png" alt="Leader" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-lg mb-1">القائد علي حسن</h3>
+                <p class="text-green-600 text-sm mb-4">مسؤول البرامج</p>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { initStructure } from '../js/structure_manager.js';
+        document.addEventListener('DOMContentLoaded', initStructure);
+    </script>
+</body>
+
+</html>

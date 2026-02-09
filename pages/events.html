@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Al-Salam Scouts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-stone-50 text-stone-900 flex flex-col min-h-screen">
+
+    <main class="flex-grow container mx-auto px-4 py-24 mt-12">
+        <h1 class="text-4xl font-bold text-green-900 mb-12 text-center">الفعاليات القادمة</h1>
+
+        <div class="space-y-6">
+            <!-- Event 1 -->
+            <div
+                class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col md:flex-row gap-6 items-center">
+                <div class="bg-green-100 text-green-800 p-4 rounded-xl text-center min-w-[100px]">
+                    <span class="block text-3xl font-bold">15</span>
+                    <span class="text-sm font-bold">مارس</span>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold mb-2">معسكر التدريب الربيعي</h3>
+                    <p class="text-stone-600 mb-2"><span class="font-bold">الموقع:</span> مخيم الكشافة الدولي</p>
+                    <p class="text-stone-500 text-sm">معسكر تدريبي مكثف لمدة 3 أيام لتعلم مهارات البقاء والملاحة.</p>
+                </div>
+                <button
+                    class="bg-green-600 text-white px-6 py-2 rounded-full font-bold hover:bg-green-700 transition w-full md:w-auto">سجل
+                    الآن</button>
+            </div>
+
+            <!-- Event 2 -->
+            <div
+                class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col md:flex-row gap-6 items-center">
+                <div class="bg-green-100 text-green-800 p-4 rounded-xl text-center min-w-[100px]">
+                    <span class="block text-3xl font-bold">22</span>
+                    <span class="text-sm font-bold">أبريل</span>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold mb-2">احتفال يوم الأرض</h3>
+                    <p class="text-stone-600 mb-2"><span class="font-bold">الموقع:</span> حديقة الأزهر</p>
+                    <p class="text-stone-500 text-sm">مشاركة مجتمعية لزراعة الأشجار وتنظيف الحديقة.</p>
+                </div>
+                <button
+                    class="bg-stone-200 text-stone-500 px-6 py-2 rounded-full font-bold cursor-not-allowed w-full md:w-auto">قريباً</button>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { initStructure } from '../js/structure_manager.js';
+        document.addEventListener('DOMContentLoaded', initStructure);
+    </script>
+</body>
+
+</html>
