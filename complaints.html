@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الشكاوى والمقترحات - مجموعات السلام الكشفية</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
     <script type="importmap">
     {
       "imports": {
@@ -13,6 +15,123 @@
       }
     }
     </script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .group-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .group-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .group-card.selected {
+            ring: 3px;
+            transform: scale(1.02);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+
+            to {
+                opacity: 1;
+                max-height: 500px;
+            }
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes checkmark {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .animate-slide-down {
+            animation: slideDown 0.4s ease-out forwards;
+        }
+
+        .success-ring {
+            animation: pulse-ring 1s ease-out infinite;
+        }
+
+        .success-check {
+            animation: checkmark 0.5s ease-out 0.3s forwards;
+            transform: scale(0);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        .progress-dot {
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: #16a34a;
+            transform: scale(1.3);
+        }
+
+        .progress-dot.completed {
+            background: #16a34a;
+        }
+
+        .progress-line {
+            transition: width 0.5s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+        }
+    </style>
 </head>
 
 <body class="bg-stone-50 text-stone-900">
@@ -24,82 +143,400 @@
             <div class="absolute inset-0 bg-stone-900/90"></div>
         </div>
         <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                نموذج التواصل المباشر
+            </div>
             <h1 class="text-4xl lg:text-7xl font-extrabold mb-6 leading-tight" data-i18n="nav_complaints">الشكاوى
                 والمقترحات</h1>
             <p class="text-xl lg:text-2xl mb-10 max-w-2xl mx-auto opacity-90">صوتك مسموع.. ورأيك يهمنا</p>
         </div>
     </section>
 
-    <!-- Form Section -->
-    <section class="py-20">
+    <!-- Multi-Step Form Section -->
+    <section class="py-20 -mt-10 relative z-20">
         <div class="max-w-3xl mx-auto px-4">
-            <div class="bg-white rounded-[2rem] shadow-xl p-10 border border-stone-100 relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-stone-100 rounded-bl-full -mr-10 -mt-10 z-0"></div>
 
-                <h2 class="text-3xl font-bold text-stone-800 mb-8 relative z-10 text-center">نموذج التواصل</h2>
+            <!-- Progress Bar -->
+            <div class="mb-10 px-8">
+                <div class="flex items-center justify-between relative">
+                    <div class="absolute top-1/2 left-0 right-0 h-1 bg-stone-200 rounded -translate-y-1/2 z-0">
+                        <div id="progress-fill" class="h-full bg-green-500 rounded progress-line" style="width: 0%">
+                        </div>
+                    </div>
+                    <div class="progress-dot active w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center text-sm font-bold z-10 shadow-lg"
+                        data-step="1">1</div>
+                    <div class="progress-dot w-10 h-10 rounded-full bg-stone-300 text-white flex items-center justify-center text-sm font-bold z-10"
+                        data-step="2">2</div>
+                    <div class="progress-dot w-10 h-10 rounded-full bg-stone-300 text-white flex items-center justify-center text-sm font-bold z-10"
+                        data-step="3">3</div>
+                </div>
+                <div class="flex justify-between mt-3 text-xs font-bold text-stone-500">
+                    <span>المعلومات الشخصية</span>
+                    <span>تفاصيل الشكوى</span>
+                    <span>تأكيد وإرسال</span>
+                </div>
+            </div>
 
-                <form class="space-y-6 relative z-10">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="block text-sm font-bold text-stone-700">الاسم الكامل</label>
-                            <div class="relative">
-                                <i data-lucide="user" class="absolute right-4 top-3.5 text-stone-400 w-5 h-5"></i>
-                                <input type="text"
-                                    class="w-full bg-stone-50 border border-stone-200 rounded-xl py-3 pr-12 pl-4 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
-                                    placeholder="الاسم ثلاثي">
+            <div
+                class="bg-white rounded-[2rem] shadow-2xl p-8 md:p-12 border border-stone-100 relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-green-50 to-transparent rounded-bl-full -mr-10 -mt-10 z-0">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-stone-50 to-transparent rounded-tr-full -ml-10 -mb-10 z-0">
+                </div>
+
+                <form id="complaint-form" class="relative z-10" novalidate>
+
+                    <!-- STEP 1: Personal Info -->
+                    <div class="form-step active" data-step="1">
+                        <h2 class="text-2xl font-bold text-stone-800 mb-2">المعلومات الشخصية</h2>
+                        <p class="text-stone-500 mb-8 text-sm">أدخل بياناتك الأساسية للتواصل</p>
+
+                        <div class="space-y-5">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-bold text-stone-700">الاسم الكامل <span
+                                            class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <i data-lucide="user"
+                                            class="absolute right-4 top-3.5 text-stone-400 w-5 h-5"></i>
+                                        <input type="text" name="name" id="f-name" required
+                                            class="w-full bg-stone-50 border border-stone-200 rounded-xl py-3 pr-12 pl-4 focus:outline-none focus:border-green-500 transition"
+                                            placeholder="الاسم ثلاثي">
+                                    </div>
+                                    <p class="text-red-500 text-xs hidden" id="err-name">يرجى إدخال الاسم</p>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-bold text-stone-700">رقم الهاتف <span
+                                            class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <i data-lucide="phone"
+                                            class="absolute right-4 top-3.5 text-stone-400 w-5 h-5"></i>
+                                        <input type="tel" name="phone" id="f-phone" required
+                                            class="w-full bg-stone-50 border border-stone-200 rounded-xl py-3 pr-12 pl-4 focus:outline-none focus:border-green-500 transition"
+                                            placeholder="05xxxxxxxx">
+                                    </div>
+                                    <p class="text-red-500 text-xs hidden" id="err-phone">يرجى إدخال رقم هاتف صحيح</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-stone-700">البريد الإلكتروني <span
+                                        class="text-stone-400 text-xs">(اختياري)</span></label>
+                                <div class="relative">
+                                    <i data-lucide="mail" class="absolute right-4 top-3.5 text-stone-400 w-5 h-5"></i>
+                                    <input type="email" name="email" id="f-email"
+                                        class="w-full bg-stone-50 border border-stone-200 rounded-xl py-3 pr-12 pl-4 focus:outline-none focus:border-green-500 transition"
+                                        placeholder="name@example.com">
+                                </div>
                             </div>
                         </div>
-                        <div class="space-y-2">
-                            <label class="block text-sm font-bold text-stone-700">رقم الهاتف</label>
-                            <div class="relative">
-                                <i data-lucide="phone" class="absolute right-4 top-3.5 text-stone-400 w-5 h-5"></i>
-                                <input type="tel"
-                                    class="w-full bg-stone-50 border border-stone-200 rounded-xl py-3 pr-12 pl-4 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
-                                    placeholder="05xxxxxxxx">
+
+                        <div class="mt-8 flex justify-start">
+                            <button type="button" onclick="nextStep(2)"
+                                class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-10 rounded-xl shadow-lg hover:shadow-xl transition transform active:scale-95 flex items-center gap-2">
+                                التالي
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" class="rotate-180">
+                                    <path d="m9 18 6-6-6-6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Complaint Details -->
+                    <div class="form-step" data-step="2">
+                        <h2 class="text-2xl font-bold text-stone-800 mb-2">تفاصيل الرسالة</h2>
+                        <p class="text-stone-500 mb-8 text-sm">اختر المجموعة ونوع الرسالة</p>
+
+                        <div class="space-y-6">
+
+                            <!-- Group Selector -->
+                            <div class="space-y-3">
+                                <label class="block text-sm font-bold text-stone-700">المجموعة المعنية <span
+                                        class="text-red-500">*</span></label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="group-selector">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="group" value="عام" class="peer sr-only" checked>
+                                        <div
+                                            class="group-card bg-stone-50 border-2 border-stone-200 rounded-xl p-3 text-center peer-checked:bg-blue-50 peer-checked:border-blue-500 peer-checked:shadow-lg">
+                                            <span class="text-2xl block mb-1">🔵</span>
+                                            <span class="block font-bold text-sm">عام</span>
+                                            <span class="block text-[10px] text-stone-400">General</span>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="group" value="البراعم" class="peer sr-only">
+                                        <div
+                                            class="group-card bg-stone-50 border-2 border-stone-200 rounded-xl p-3 text-center peer-checked:bg-yellow-50 peer-checked:border-yellow-500 peer-checked:shadow-lg">
+                                            <span class="text-2xl block mb-1">🌱</span>
+                                            <span class="block font-bold text-sm">البراعم</span>
+                                            <span class="block text-[10px] text-stone-400">4-6 سنوات</span>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="group" value="الزهرات" class="peer sr-only">
+                                        <div
+                                            class="group-card bg-stone-50 border-2 border-stone-200 rounded-xl p-3 text-center peer-checked:bg-pink-50 peer-checked:border-pink-500 peer-checked:shadow-lg">
+                                            <span class="text-2xl block mb-1">🌸</span>
+                                            <span class="block font-bold text-sm">الزهرات</span>
+                                            <span class="block text-[10px] text-stone-400">6-10 سنوات</span>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="group" value="الكشاف" class="peer sr-only">
+                                        <div
+                                            class="group-card bg-stone-50 border-2 border-stone-200 rounded-xl p-3 text-center peer-checked:bg-green-50 peer-checked:border-green-500 peer-checked:shadow-lg">
+                                            <span class="text-2xl block mb-1">🧭</span>
+                                            <span class="block font-bold text-sm">الكشاف</span>
+                                            <span class="block text-[10px] text-stone-400">11-14 سنة</span>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="group" value="المتقدم" class="peer sr-only">
+                                        <div
+                                            class="group-card bg-stone-50 border-2 border-stone-200 rounded-xl p-3 text-center peer-checked:bg-blue-50 peer-checked:border-blue-600 peer-checked:shadow-lg">
+                                            <span class="text-2xl block mb-1">🚀</span>
+                                            <span class="block font-bold text-sm">المتقدم</span>
+                                            <span class="block text-[10px] text-stone-400">15-17 سنة</span>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="group" value="القادة" class="peer sr-only">
+                                        <div
+                                            class="group-card bg-stone-50 border-2 border-stone-200 rounded-xl p-3 text-center peer-checked:bg-stone-100 peer-checked:border-stone-700 peer-checked:shadow-lg">
+                                            <span class="text-2xl block mb-1">👔</span>
+                                            <span class="block font-bold text-sm">القادة</span>
+                                            <span class="block text-[10px] text-stone-400">18+ سنة</span>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="group" value="القائدات" class="peer sr-only">
+                                        <div
+                                            class="group-card bg-stone-50 border-2 border-stone-200 rounded-xl p-3 text-center peer-checked:bg-purple-50 peer-checked:border-purple-500 peer-checked:shadow-lg">
+                                            <span class="text-2xl block mb-1">👩‍🏫</span>
+                                            <span class="block font-bold text-sm">القائدات</span>
+                                            <span class="block text-[10px] text-stone-400">18+ سنة</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Message Type -->
+                            <div class="space-y-3">
+                                <label class="block text-sm font-bold text-stone-700">نوع الرسالة <span
+                                        class="text-red-500">*</span></label>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="type" value="شكوى" class="peer sr-only" checked>
+                                        <div
+                                            class="bg-stone-50 border-2 border-stone-200 rounded-xl p-4 text-center peer-checked:bg-red-50 peer-checked:border-red-500 peer-checked:text-red-700 transition group-card">
+                                            <span class="text-2xl block mb-1">⚠️</span>
+                                            <span class="block font-bold">شكوى</span>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="type" value="اقتراح" class="peer sr-only">
+                                        <div
+                                            class="bg-stone-50 border-2 border-stone-200 rounded-xl p-4 text-center peer-checked:bg-blue-50 peer-checked:border-blue-500 peer-checked:text-blue-700 transition group-card">
+                                            <span class="text-2xl block mb-1">💡</span>
+                                            <span class="block font-bold">اقتراح</span>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="type" value="استفسار" class="peer sr-only">
+                                        <div
+                                            class="bg-stone-50 border-2 border-stone-200 rounded-xl p-4 text-center peer-checked:bg-purple-50 peer-checked:border-purple-500 peer-checked:text-purple-700 transition group-card">
+                                            <span class="text-2xl block mb-1">❓</span>
+                                            <span class="block font-bold">استفسار</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Priority -->
+                            <div class="space-y-3">
+                                <label class="block text-sm font-bold text-stone-700">الأولوية</label>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="priority" value="منخفض" class="peer sr-only">
+                                        <div
+                                            class="bg-stone-50 border-2 border-stone-200 rounded-xl p-3 text-center peer-checked:bg-green-50 peer-checked:border-green-500 transition group-card">
+                                            <span class="block font-bold text-sm">🟢 منخفض</span>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="priority" value="متوسط" class="peer sr-only" checked>
+                                        <div
+                                            class="bg-stone-50 border-2 border-stone-200 rounded-xl p-3 text-center peer-checked:bg-yellow-50 peer-checked:border-yellow-500 transition group-card">
+                                            <span class="block font-bold text-sm">🟡 متوسط</span>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="priority" value="عالي" class="peer sr-only">
+                                        <div
+                                            class="bg-stone-50 border-2 border-stone-200 rounded-xl p-3 text-center peer-checked:bg-red-50 peer-checked:border-red-500 transition group-card">
+                                            <span class="block font-bold text-sm">🔴 عالي</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Message -->
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-stone-700">نص الرسالة <span
+                                        class="text-red-500">*</span></label>
+                                <textarea rows="5" name="message" id="f-message" required
+                                    class="w-full bg-stone-50 border border-stone-200 rounded-xl p-4 focus:outline-none focus:border-green-500 transition resize-none"
+                                    placeholder="اكتب تفاصيل رسالتك هنا... كلما كانت التفاصيل أكثر، كان التعامل أسرع"></textarea>
+                                <div class="flex justify-between text-xs text-stone-400">
+                                    <p class="text-red-500 hidden" id="err-message">يرجى كتابة نص الرسالة</p>
+                                    <span id="char-count">0 / 2000</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-bold text-stone-700">نوع الرسالة</label>
-                        <div class="grid grid-cols-3 gap-4">
-                            <label class="cursor-pointer">
-                                <input type="radio" name="type" class="peer sr-only">
-                                <div
-                                    class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center peer-checked:bg-green-50 peer-checked:border-green-500 peer-checked:text-green-700 transition">
-                                    <span class="block font-bold">شكوى</span>
-                                </div>
-                            </label>
-                            <label class="cursor-pointer">
-                                <input type="radio" name="type" class="peer sr-only">
-                                <div
-                                    class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center peer-checked:bg-blue-50 peer-checked:border-blue-500 peer-checked:text-blue-700 transition">
-                                    <span class="block font-bold">اقتراح</span>
-                                </div>
-                            </label>
-                            <label class="cursor-pointer">
-                                <input type="radio" name="type" class="peer sr-only">
-                                <div
-                                    class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center peer-checked:bg-purple-50 peer-checked:border-purple-500 peer-checked:text-purple-700 transition">
-                                    <span class="block font-bold">استفسار</span>
-                                </div>
-                            </label>
+                        <div class="mt-8 flex justify-between">
+                            <button type="button" onclick="prevStep(1)"
+                                class="bg-stone-200 hover:bg-stone-300 text-stone-700 font-bold py-3 px-8 rounded-xl transition flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="m9 18 6-6-6-6" />
+                                </svg>
+                                السابق
+                            </button>
+                            <button type="button" onclick="nextStep(3)"
+                                class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-10 rounded-xl shadow-lg hover:shadow-xl transition transform active:scale-95 flex items-center gap-2">
+                                مراجعة وإرسال
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" class="rotate-180">
+                                    <path d="m9 18 6-6-6-6" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
 
-                    <div class="space-y-2">
-                        <label class="block text-sm font-bold text-stone-700">نص الرسالة</label>
-                        <textarea rows="5"
-                            class="w-full bg-stone-50 border border-stone-200 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
-                            placeholder="اكتب تفاصيل رسالتك هنا..."></textarea>
-                    </div>
+                    <!-- STEP 3: Review & Submit -->
+                    <div class="form-step" data-step="3">
+                        <h2 class="text-2xl font-bold text-stone-800 mb-2">مراجعة وتأكيد</h2>
+                        <p class="text-stone-500 mb-8 text-sm">راجع بياناتك قبل الإرسال</p>
 
-                    <button type="submit"
-                        class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition transform active:scale-95 flex items-center justify-center gap-2">
-                        <i data-lucide="send"></i> إرسال الرسالة
-                    </button>
+                        <div class="bg-stone-50 rounded-2xl p-6 space-y-4 border border-stone-100">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <span class="text-xs text-stone-400 block">الاسم</span>
+                                    <span class="font-bold text-stone-800" id="review-name">—</span>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-stone-400 block">الهاتف</span>
+                                    <span class="font-bold text-stone-800" id="review-phone">—</span>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-stone-400 block">البريد</span>
+                                    <span class="font-bold text-stone-800" id="review-email">—</span>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-stone-400 block">المجموعة</span>
+                                    <span class="font-bold text-stone-800" id="review-group">—</span>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-stone-400 block">النوع</span>
+                                    <span class="font-bold text-stone-800" id="review-type">—</span>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-stone-400 block">الأولوية</span>
+                                    <span class="font-bold text-stone-800" id="review-priority">—</span>
+                                </div>
+                            </div>
+                            <hr class="border-stone-200">
+                            <div>
+                                <span class="text-xs text-stone-400 block mb-1">الرسالة</span>
+                                <p class="text-stone-700 text-sm leading-relaxed" id="review-message">—</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 flex justify-between">
+                            <button type="button" onclick="prevStep(2)"
+                                class="bg-stone-200 hover:bg-stone-300 text-stone-700 font-bold py-3 px-8 rounded-xl transition flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="m9 18 6-6-6-6" />
+                                </svg>
+                                تعديل
+                            </button>
+                            <button type="submit" id="submit-btn"
+                                class="bg-stone-900 hover:bg-stone-800 text-white font-bold py-4 px-12 rounded-xl shadow-lg hover:shadow-xl transition transform active:scale-95 flex items-center justify-center gap-2">
+                                <i data-lucide="send"></i> إرسال الرسالة
+                            </button>
+                        </div>
+                    </div>
                 </form>
 
+                <!-- Success Message (hidden initially) -->
+                <div id="success-message" class="hidden text-center py-12 relative z-10">
+                    <div class="relative inline-block mb-6">
+                        <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                            <svg class="w-12 h-12 text-green-600 success-check" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <div
+                            class="absolute inset-0 w-24 h-24 bg-green-200 rounded-full mx-auto success-ring opacity-50">
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-green-800 mb-2">تم إرسال رسالتك بنجاح! ✅</h3>
+                    <p class="text-stone-500 mb-2">رقم الشكوى: <span id="complaint-id"
+                            class="font-bold text-green-700">#SC-0001</span></p>
+                    <p class="text-stone-400 text-sm mb-8">سيتم مراجعة رسالتك والرد عليك في أقرب وقت</p>
+                    <button onclick="resetForm()"
+                        class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-xl transition">
+                        إرسال رسالة جديدة
+                    </button>
+                </div>
+
+                <!-- Error Message (hidden initially) -->
+                <div id="error-message" class="hidden text-center py-8 relative z-10">
+                    <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-10 h-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            stroke-width="2.5">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-red-800 mb-2">حدث خطأ في الإرسال</h3>
+                    <p class="text-stone-500 mb-6 text-sm" id="error-text">يرجى المحاولة مرة أخرى</p>
+                    <button onclick="hideError()"
+                        class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-xl transition">
+                        حاول مرة أخرى
+                    </button>
+                </div>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="grid md:grid-cols-3 gap-4 mt-8">
+                <div class="bg-white rounded-xl p-5 border border-stone-100 shadow-sm text-center">
+                    <span class="text-3xl block mb-2">🔒</span>
+                    <h4 class="font-bold text-sm mb-1">بيانات سرية</h4>
+                    <p class="text-xs text-stone-400">جميع البيانات محمية ولا يتم مشاركتها</p>
+                </div>
+                <div class="bg-white rounded-xl p-5 border border-stone-100 shadow-sm text-center">
+                    <span class="text-3xl block mb-2">⚡</span>
+                    <h4 class="font-bold text-sm mb-1">رد سريع</h4>
+                    <p class="text-xs text-stone-400">نلتزم بالرد خلال 48 ساعة عمل</p>
+                </div>
+                <div class="bg-white rounded-xl p-5 border border-stone-100 shadow-sm text-center">
+                    <span class="text-3xl block mb-2">📊</span>
+                    <h4 class="font-bold text-sm mb-1">متابعة مستمرة</h4>
+                    <p class="text-xs text-stone-400">يمكنك متابعة حالة شكواك برقم المرجع</p>
+                </div>
             </div>
         </div>
     </section>
@@ -107,6 +544,166 @@
     <script type="module">
         import { initStructure } from './js/structure_manager.js';
         document.addEventListener('DOMContentLoaded', initStructure);
+    </script>
+
+    <script>
+        // ===== Google Apps Script Web App URL =====
+        // REPLACE THIS with your deployed Google Apps Script web app URL
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdUN6yPgNlPa91EAO_lCrw7FoHxWS1VGH4f0ViaQMi6GOOnuX9LHFDXRJrtQC-Lhl8/exec';
+
+        let currentStep = 1;
+
+        // === Step Navigation ===
+        function nextStep(step) {
+            if (step === 2 && !validateStep1()) return;
+            if (step === 3 && !validateStep2()) return;
+            if (step === 3) populateReview();
+            goToStep(step);
+        }
+        function prevStep(step) { goToStep(step); }
+
+        function goToStep(step) {
+            document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+            document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+
+            document.querySelectorAll('.progress-dot').forEach(dot => {
+                const s = parseInt(dot.dataset.step);
+                dot.classList.remove('active', 'completed');
+                if (s < step) dot.classList.add('completed');
+                if (s === step) dot.classList.add('active');
+            });
+
+            const fill = ((step - 1) / 2) * 100;
+            document.getElementById('progress-fill').style.width = fill + '%';
+            currentStep = step;
+        }
+
+        // === Validation ===
+        function validateStep1() {
+            let valid = true;
+            const name = document.getElementById('f-name');
+            const phone = document.getElementById('f-phone');
+
+            if (!name.value.trim()) {
+                document.getElementById('err-name').classList.remove('hidden');
+                name.classList.add('border-red-400');
+                valid = false;
+            } else {
+                document.getElementById('err-name').classList.add('hidden');
+                name.classList.remove('border-red-400');
+            }
+
+            if (!phone.value.trim() || phone.value.trim().length < 8) {
+                document.getElementById('err-phone').classList.remove('hidden');
+                phone.classList.add('border-red-400');
+                valid = false;
+            } else {
+                document.getElementById('err-phone').classList.add('hidden');
+                phone.classList.remove('border-red-400');
+            }
+            return valid;
+        }
+
+        function validateStep2() {
+            let valid = true;
+            const msg = document.getElementById('f-message');
+            if (!msg.value.trim()) {
+                document.getElementById('err-message').classList.remove('hidden');
+                msg.classList.add('border-red-400');
+                valid = false;
+            } else {
+                document.getElementById('err-message').classList.add('hidden');
+                msg.classList.remove('border-red-400');
+            }
+            return valid;
+        }
+
+        // === Review ===
+        function populateReview() {
+            document.getElementById('review-name').textContent = document.getElementById('f-name').value;
+            document.getElementById('review-phone').textContent = document.getElementById('f-phone').value;
+            document.getElementById('review-email').textContent = document.getElementById('f-email').value || 'لم يُحدد';
+            document.getElementById('review-group').textContent = document.querySelector('input[name="group"]:checked').value;
+            document.getElementById('review-type').textContent = document.querySelector('input[name="type"]:checked').value;
+            document.getElementById('review-priority').textContent = document.querySelector('input[name="priority"]:checked').value;
+            document.getElementById('review-message').textContent = document.getElementById('f-message').value;
+        }
+
+        // === Character count ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const ta = document.getElementById('f-message');
+            if (ta) {
+                ta.addEventListener('input', () => {
+                    const len = ta.value.length;
+                    document.getElementById('char-count').textContent = len + ' / 2000';
+                    if (len > 2000) ta.value = ta.value.substring(0, 2000);
+                });
+            }
+        });
+
+        // === Form Submission ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('complaint-form');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const btn = document.getElementById('submit-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> جاري الإرسال...';
+                btn.disabled = true;
+
+                const data = {
+                    name: document.getElementById('f-name').value.trim(),
+                    phone: document.getElementById('f-phone').value.trim(),
+                    email: document.getElementById('f-email').value.trim(),
+                    group: document.querySelector('input[name="group"]:checked').value,
+                    type: document.querySelector('input[name="type"]:checked').value,
+                    priority: document.querySelector('input[name="priority"]:checked').value,
+                    message: document.getElementById('f-message').value.trim(),
+                    timestamp: new Date().toISOString()
+                };
+
+                try {
+                    const response = await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+
+                    // With no-cors, we can't read the response, so we assume success
+                    const id = 'SC-' + Date.now().toString(36).toUpperCase();
+                    document.getElementById('complaint-id').textContent = '#' + id;
+                    form.classList.add('hidden');
+                    document.getElementById('success-message').classList.remove('hidden');
+
+                } catch (error) {
+                    document.getElementById('error-text').textContent = 'تعذر الاتصال بالخادم. يرجى التحقق من اتصالك بالإنترنت.';
+                    document.getElementById('error-message').classList.remove('hidden');
+                } finally {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            });
+        });
+
+        function resetForm() {
+            document.getElementById('complaint-form').reset();
+            document.getElementById('complaint-form').classList.remove('hidden');
+            document.getElementById('success-message').classList.add('hidden');
+            document.getElementById('error-message').classList.add('hidden');
+            goToStep(1);
+        }
+
+        function hideError() {
+            document.getElementById('error-message').classList.add('hidden');
+        }
+
+        // Expose to onclick
+        window.nextStep = nextStep;
+        window.prevStep = prevStep;
+        window.resetForm = resetForm;
+        window.hideError = hideError;
     </script>
 </body>
 

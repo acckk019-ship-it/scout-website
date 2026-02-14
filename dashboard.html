@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - مجموعات السلام الكشفية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <script type="importmap">
+    {
+      "imports": {
+        "lucide": "https://esm.sh/lucide@0.344.0"
+      }
+    }
+    </script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+
+<body class="bg-stone-100 text-stone-900">
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-white z-[100] flex items-center justify-center">
+        <div class="text-center">
+            <img src="/scout-website/logo.png" alt="Logo" class="w-16 mx-auto mb-4 animate-pulse">
+            <p class="text-stone-500 font-bold">جاري التحميل...</p>
+        </div>
+    </div>
+
+    <!-- Dashboard Layout -->
+    <div id="dashboard" class="hidden min-h-screen">
+
+        <!-- Top Bar -->
+        <header class="bg-white border-b border-stone-200 shadow-sm sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <img src="/scout-website/logo.png" alt="Logo" class="h-10 w-10">
+                    <div>
+                        <h1 class="font-bold text-lg text-stone-800">لوحة تحكم القادة</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="text-sm text-stone-500" id="user-email"></span>
+                    <button id="logout-btn"
+                        class="bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold py-2 px-4 rounded-xl transition text-sm flex items-center gap-2">
+                        <i data-lucide="log-out" class="w-4 h-4"></i> خروج
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <main class="max-w-7xl mx-auto px-4 py-8">
+
+            <!-- Welcome Section -->
+            <div class="mb-8 animate-fade-in">
+                <h2 class="text-3xl font-bold text-stone-800 mb-2">مرحباً <span id="user-name"
+                        class="text-green-700">قائد</span> 👋</h2>
+                <p class="text-stone-500">إليك نظرة عامة على نشاط المجموعة</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="stat-card bg-white rounded-2xl p-6 border border-stone-100 shadow-sm animate-fade-in"
+                    style="animation-delay: 0.1s">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                            <span class="text-2xl">📩</span>
+                        </div>
+                    </div>
+                    <p class="text-3xl font-bold text-stone-800" id="stat-total">—</p>
+                    <p class="text-sm text-stone-500">إجمالي الرسائل</p>
+                </div>
+                <div class="stat-card bg-white rounded-2xl p-6 border border-stone-100 shadow-sm animate-fade-in"
+                    style="animation-delay: 0.2s">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
+                            <span class="text-2xl">🕐</span>
+                        </div>
+                    </div>
+                    <p class="text-3xl font-bold text-yellow-600" id="stat-pending">—</p>
+                    <p class="text-sm text-stone-500">قيد المراجعة</p>
+                </div>
+                <div class="stat-card bg-white rounded-2xl p-6 border border-stone-100 shadow-sm animate-fade-in"
+                    style="animation-delay: 0.3s">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                            <span class="text-2xl">✅</span>
+                        </div>
+                    </div>
+                    <p class="text-3xl font-bold text-green-600" id="stat-resolved">—</p>
+                    <p class="text-sm text-stone-500">تم الحل</p>
+                </div>
+                <div class="stat-card bg-white rounded-2xl p-6 border border-stone-100 shadow-sm animate-fade-in"
+                    style="animation-delay: 0.4s">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                            <span class="text-2xl">🔴</span>
+                        </div>
+                    </div>
+                    <p class="text-3xl font-bold text-red-600" id="stat-urgent">—</p>
+                    <p class="text-sm text-stone-500">أولوية عالية</p>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="grid md:grid-cols-3 gap-4 mb-8">
+                <a href="/scout-website/complaints.html"
+                    class="bg-green-600 hover:bg-green-700 text-white rounded-2xl p-6 shadow-lg transition transform hover:-translate-y-1 text-center">
+                    <span class="text-3xl block mb-2">📝</span>
+                    <h3 class="font-bold text-lg">نموذج الشكاوى</h3>
+                    <p class="text-green-100 text-sm">عرض صفحة الشكاوى</p>
+                </a>
+                <a href="/scout-website/team/index.html"
+                    class="bg-stone-800 hover:bg-stone-900 text-white rounded-2xl p-6 shadow-lg transition transform hover:-translate-y-1 text-center">
+                    <span class="text-3xl block mb-2">👥</span>
+                    <h3 class="font-bold text-lg">فريق العمل</h3>
+                    <p class="text-stone-300 text-sm">إدارة القادة</p>
+                </a>
+                <a href="/scout-website/index.html"
+                    class="bg-blue-600 hover:bg-blue-700 text-white rounded-2xl p-6 shadow-lg transition transform hover:-translate-y-1 text-center">
+                    <span class="text-3xl block mb-2">🏠</span>
+                    <h3 class="font-bold text-lg">الموقع الرئيسي</h3>
+                    <p class="text-blue-100 text-sm">العودة للصفحة الرئيسية</p>
+                </a>
+            </div>
+
+            <!-- Groups Overview -->
+            <div class="bg-white rounded-2xl p-6 border border-stone-100 shadow-sm mb-8 animate-fade-in">
+                <h3 class="text-xl font-bold text-stone-800 mb-6">المجموعات الكشفية</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+                    <div class="bg-blue-50 rounded-xl p-4 text-center border border-blue-100">
+                        <span class="text-2xl block mb-1">🔵</span>
+                        <span class="font-bold text-sm block">عام</span>
+                        <span class="text-xs text-stone-400">General</span>
+                    </div>
+                    <div class="bg-yellow-50 rounded-xl p-4 text-center border border-yellow-100">
+                        <span class="text-2xl block mb-1">🌱</span>
+                        <span class="font-bold text-sm block">البراعم</span>
+                        <span class="text-xs text-stone-400">4-6 سنوات</span>
+                    </div>
+                    <div class="bg-pink-50 rounded-xl p-4 text-center border border-pink-100">
+                        <span class="text-2xl block mb-1">🌸</span>
+                        <span class="font-bold text-sm block">الزهرات</span>
+                        <span class="text-xs text-stone-400">6-10 سنوات</span>
+                    </div>
+                    <div class="bg-green-50 rounded-xl p-4 text-center border border-green-100">
+                        <span class="text-2xl block mb-1">🧭</span>
+                        <span class="font-bold text-sm block">الكشاف</span>
+                        <span class="text-xs text-stone-400">11-14 سنة</span>
+                    </div>
+                    <div class="bg-blue-50 rounded-xl p-4 text-center border border-blue-100">
+                        <span class="text-2xl block mb-1">🚀</span>
+                        <span class="font-bold text-sm block">المتقدم</span>
+                        <span class="text-xs text-stone-400">15-17 سنة</span>
+                    </div>
+                    <div class="bg-stone-50 rounded-xl p-4 text-center border border-stone-200">
+                        <span class="text-2xl block mb-1">👔</span>
+                        <span class="font-bold text-sm block">القادة</span>
+                        <span class="text-xs text-stone-400">18+ سنة</span>
+                    </div>
+                    <div class="bg-purple-50 rounded-xl p-4 text-center border border-purple-100">
+                        <span class="text-2xl block mb-1">👩‍🏫</span>
+                        <span class="font-bold text-sm block">القائدات</span>
+                        <span class="text-xs text-stone-400">18+ سنة</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Banner -->
+            <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-6 border border-green-100 text-center">
+                <span class="text-3xl block mb-2">📊</span>
+                <h3 class="font-bold text-lg text-stone-800 mb-2">Google Sheets متصل</h3>
+                <p class="text-stone-500 text-sm">جميع الشكاوى والمقترحات تُرسل تلقائياً إلى جداول البيانات المنظمة حسب
+                    المجموعة</p>
+                <p class="text-stone-400 text-xs mt-2">Dashboard | عام | البراعم | الزهرات | الكشاف | المتقدم | القادة |
+                    القائدات</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-stone-200 bg-white py-4 mt-8">
+            <p class="text-center text-stone-400 text-sm">مجموعات السلام الكشفية — لوحة تحكم القادة © 2026</p>
+        </footer>
+    </div>
+
+    <script type="module">
+        import { supabase } from './js/supabase-config.js';
+        import { createIcons, LogOut } from 'https://esm.sh/lucide@0.344.0';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Check authentication
+            const { data: { session } } = await supabase.auth.getSession();
+
+            if (!session) {
+                window.location.href = '/scout-website/login.html';
+                return;
+            }
+
+            // Show dashboard
+            document.getElementById('loading-screen').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+
+            // Set user info
+            const user = session.user;
+            document.getElementById('user-email').textContent = user.email;
+            document.getElementById('user-name').textContent =
+                user.user_metadata?.full_name || user.email.split('@')[0];
+
+            // Initialize icons
+            createIcons({ icons: { LogOut } });
+
+            // Logout handler
+            document.getElementById('logout-btn').addEventListener('click', async () => {
+                await supabase.auth.signOut();
+                window.location.href = '/scout-website/login.html';
+            });
+
+            // Fetch stats from Supabase (if complaints table exists)
+            try {
+                const { data, error } = await supabase.from('complaints').select('status, priority');
+
+                if (!error && data) {
+                    document.getElementById('stat-total').textContent = data.length;
+                    document.getElementById('stat-pending').textContent =
+                        data.filter(c => c.status === 'جديد' || c.status === 'قيد المراجعة').length;
+                    document.getElementById('stat-resolved').textContent =
+                        data.filter(c => c.status === 'مغلق').length;
+                    document.getElementById('stat-urgent').textContent =
+                        data.filter(c => c.priority === 'عالي').length;
+                } else {
+                    // Table doesn't exist yet — show zeros
+                    document.getElementById('stat-total').textContent = '0';
+                    document.getElementById('stat-pending').textContent = '0';
+                    document.getElementById('stat-resolved').textContent = '0';
+                    document.getElementById('stat-urgent').textContent = '0';
+                }
+            } catch (err) {
+                console.log('Stats not available yet:', err);
+                document.getElementById('stat-total').textContent = '0';
+                document.getElementById('stat-pending').textContent = '0';
+                document.getElementById('stat-resolved').textContent = '0';
+                document.getElementById('stat-urgent').textContent = '0';
+            }
+        });
+    </script>
+</body>
+
+</html>
